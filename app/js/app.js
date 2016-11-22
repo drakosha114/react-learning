@@ -160,7 +160,7 @@ var Contact = React.createClass({
     render: function () {
         return (
             <li className="contacts__item">
-                <img src={this.props.name} width="32" height="32"/>
+                <img src={this.props.picture} width="32" height="32"/>
                 <h2 className="contacts__name">{this.props.name}</h2>
                 <p className="contacts__phone">{this.props.phone}</p>
             </li>
