@@ -1,0 +1,27 @@
+{
+  "name": "react-learning",
+  "version": "1.0.0",
+  "description": "react learning application",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/drakosha114/react-learning.git"
+  },
+  "keywords": [
+    "react",
+    "learning"
+  ],
+  "author": "Andrey Skrypai",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/drakosha114/react-learning/issues"
+  },
+  "homepage": "https://github.com/drakosha114/react-learning#readme",
+  "devDependencies": {
+    "express": "^4.14.0"
+  }
+}
