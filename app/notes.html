@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Notes</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: sans-serif;
+            font-weight: 300;
+            background-color: #eaeaea;
+        }
+        #content {
+            width: 100%;
+            min-width: 400px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .notes__note {
+            width: 200px;
+            height: auto;
+            float: left;
+            background-color: yellow;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+            border-radius: 2px;
+            padding: 10px;
+            margin-bottom: 10px;
+            -webkit-transition: box-shadow .3s;
+            transition: box-shadow .3s;
+            white-space: pre-wrap;
+            white-space: -moz-pre-wrap;
+            white-space: -pre-wrap;
+            white-space: -o-pre-wrap;
+            word-wrap: break-word;
+        }
+
+        .notes__note:hover {
+            box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+        }
+        .notes__editor {
+            width: 100%;
+            max-width: 600px;
+            padding: 16px;
+            margin: 16px auto;
+            background-color: white;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+            border-radius: 2px;
+        }
+        .notes__inputTitle,
+        .notes__inputText {
+            padding: 10px;
+            border: 1px solid #cdcdcd;
+        }
+        .notes__inputTitle {
+            width: 100%;
+            margin: 5px;
+            font-size: 14px;
+        }
+        .notes__inputText {
+            width: 100%;
+            resize: none;
+            margin: 5px 5px 20px 5px;
+            font-size: 14px;
+            font-weight: 300;
+        }
+        .notes__inputTitle:focus,
+        .notes__inputText:focus {
+            outline: 0;
+        }
+
+        .notes__add {
+
+            background-color:#44c767;
+            border-radius:28px;
+            border:1px solid #18ab29;
+            cursor:pointer;
+            color:#ffffff;
+            font-size: 14px;
+            padding: 8px 8px;
+            text-transform: uppercase;
+            text-decoration:none;
+            text-shadow:0px 1px 0px #2f6627;
+        }
+
+        .notes__add:hover {
+            background-color:#5cbf2a;
+        }
+
+        .notes__add:active {
+            position:relative;
+            top:1px;
+        }
+
+        .notes__add:focus {
+            outline: 0;
+        }
+        .notes_header {
+            text-align: center;
+            font-weight: 500;
+            color: grey;
+            text-shadow: 0px 2px 3px rgba(255,255,255,0.5);
+        }
+        .notes__right {
+            text-align: right;
+        }
+    </style>
+</head>
+<body>
+    <div id="content"></div>
+    <script src="https://unpkg.com/react@15/dist/react.min.js"></script>
+    <script src="https://unpkg.com/react-dom@15/dist/react-dom.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.19.0/babel.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/masonry/3.3.2/masonry.pkgd.min.js"></script>
+    <script src="js/notes-2-w.js" type="text/babel"></script>
+</body>
+</html>
