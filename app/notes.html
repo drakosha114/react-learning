@@ -106,6 +106,18 @@
         .notes__right {
             text-align: right;
         }
+        .notes__delete {
+            position: absolute;
+            top:5px;
+            right:5px;
+            display: none;
+            color: rgba(0,0,0,0.6);
+            cursor: pointer;
+        }
+
+        .notes__note:hover .notes__delete {
+            display: block;
+        }
     </style>
 </head>
 <body>

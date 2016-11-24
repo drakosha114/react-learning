@@ -157,6 +157,7 @@ var Note = React.createClass({
 
         return (
             <div className="notes__note" style={style}>
+                <span className="notes__delete" onClick={this.props.onDelete}>X</span>
                 <h3 className="notes__title">{this.props.title}</h3>
                 <div className="notes__body">{this.props.children}</div>
             </div>
@@ -187,7 +188,7 @@ var NoteEditor = React.createClass({
             text: this.state.text,
             title: this.state.title,
             color: 'yellow',
-            id: Date.now()
+            _id: Date.now()
         });
 
         this.setState({ text: '', title: '' });
@@ -226,11 +227,13 @@ var NotesGrid = React.createClass({
         }
     },
     render: function () {
+        var notesDeleteHandler = this.props.onNoteDelete;
         return (
+
             <div className="notes__grid" ref="msnry">
                 {
                     this.props.notes.map(function(note){
-                       return <Note key={note.id} color={note.color} title={note.title}>{note.text}</Note>;
+                       return <Note key={note._id} color={note.color} title={note.title} onDelete={notesDeleteHandler.bind(null, note)}>{note.text} </Note>;
                     })
                 }
             </div>
@@ -241,12 +244,38 @@ var NotesGrid = React.createClass({
 var NotesApp = React.createClass({
     getInitialState: function () {
       return {
-          notes: NEWS
+          notes: []
       }
+
     },
     handleNoteAdd: function (newNote) {
         var newNotes = this.state.notes.slice();
         newNotes.unshift(newNote);
+        this.setState({
+            notes: newNotes
+        });
+    },
+    componentDidMount: function () {
+
+        var localNotes = JSON.parse(localStorage.getItem('notes'));
+        if (localNotes) {
+            this.setState({
+                notes: localNotes
+            })
+        }
+    },
+    componentDidUpdate: function () {
+        this._updateLocalStorage();
+    },
+    _updateLocalStorage: function () {
+        var notes = JSON.stringify(this.state.notes);
+        localStorage.setItem('notes', notes);
+    },
+    handleNoteDelete: function (note) {
+        var id = note._id;
+        var newNotes = this.state.notes.filter(function(item){
+            return item._id !== id;
+        });
         this.setState({
             notes: newNotes
         })
@@ -256,7 +285,7 @@ var NotesApp = React.createClass({
             <div className="notes">
                 <h2 className="notes_header">Notes App</h2>
                 <NoteEditor onNoteAdd={this.handleNoteAdd}/>
-                <NotesGrid notes={this.state.notes}/>
+                <NotesGrid notes={this.state.notes} onNoteDelete={this.handleNoteDelete}/>
             </div>
         )
     }
