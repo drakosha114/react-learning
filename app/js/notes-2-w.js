@@ -258,6 +258,7 @@ var NotesApp = React.createClass({
     componentDidMount: function () {
 
         var localNotes = JSON.parse(localStorage.getItem('notes'));
+        localNotes = localNotes.concat(NEWS);
         if (localNotes) {
             this.setState({
                 notes: localNotes
